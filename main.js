@@ -56,6 +56,19 @@ const view = {
     const rootElement = document.querySelector('#cards')
     rootElement.innerHTML = utility.getRandomNumberArray(52).map(index => this.getCardElement(index)).join('')
   },
+  // 翻牌
+  flipCard(card) {
+    console.log(card)
+    if (card.classList.contains('back')) {
+      // 回傳正面
+      card.classList.remove('back')
+      card.innerHTML = this.getCardContent(10) // 暫時給定 10
+      return
+    }
+    // 回傳背面
+    card.classList.add('back')
+    card.innerHTML = null
+  }
 }
 
 // 建立utility模組來存放專案的工具函式
