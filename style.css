@@ -1,6 +1,10 @@
 #cards {
   display: flex;
   /* 容器寬度的預設值為視窗大小 */
+
+  /* 換行 */
+  flex-wrap: wrap;
+
 }
 
 .card {
@@ -16,6 +20,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+
+  /* 卡片邊距 */
+  margin: 2px;
+  /* 設定 box-sizing*/
+  box-sizing: border-box;
 }
 
 /* 調整花色 */
