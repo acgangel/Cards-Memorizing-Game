@@ -46,6 +46,6 @@
 
 /* 牌背樣式 */
 .back {
-  background: url('https://assets-lighthouse.alphacamp.co/uploads/image/file/9222/ExportedContentImage_00.png');
+  background: url('./assets/back.png');
   background-size: cover;
 }
