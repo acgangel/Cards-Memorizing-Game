@@ -49,8 +49,9 @@ const view = {
   },
   // 負責選出 #cards 並抽換內容
   displayCards() {
-    const rootElement = document.querySelector('#cards')
-    rootElement.innerHTML = this.getCardElement()
-  }
+    const rootElement = document.querySelector("#cards");
+    // Array.from(Array(52).keys()) 生成陣列
+    rootElement.innerHTML = Array.from(Array(52).keys()).map(index => this.getCardElement(index)).join("");
+  },
 }
 view.displayCards()
