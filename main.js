@@ -5,6 +5,10 @@ const Symbols = [
   'https://assets-lighthouse.alphacamp.co/uploads/image/file/17991/diamonds.png', // 方塊
   'https://assets-lighthouse.alphacamp.co/uploads/image/file/17988/__.png' // 梅花
 ]
+// 0 - 12：黑桃 1 - 13
+// 13 - 25：愛心 1 - 13
+// 26 - 38：方塊 1 - 13
+// 39 - 51：梅花 1 - 13
 
 // 注意這裡的語法，當物件的屬性與函式/變數名稱相同時，可以省略不寫：
 // // 原本的寫法
