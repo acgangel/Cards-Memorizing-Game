@@ -62,7 +62,7 @@ const view = {
     if (card.classList.contains('back')) {
       // 回傳正面
       card.classList.remove('back')
-      card.innerHTML = this.getCardContent(10) // 暫時給定 10
+      card.innerHTML = this.getCardContent(Number(card.dataset.index)) // HTML回傳是字串，要改成數字
       return
     }
     // 回傳背面
