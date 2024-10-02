@@ -8,6 +8,8 @@
 }
 
 .card {
+  /* 設定 box-sizing*/
+  box-sizing: border-box;
   /* flex-basis: 7%; 每一橫列要有 13 張卡片，100 / 13=7.7
       flex-grow: 0; 不要分配剩餘空間，1 代表平分
       flex-shrink: 1; 視窗變小，flex item 就需要收縮 */
@@ -15,16 +17,13 @@
   /* 視窗大小的 8% */
   height: 8vw;
   border: 2px solid #e0e0e0;
+  /* 卡片邊距 */
+  margin: 2px;
 
   /* 變成一個 flex 容器，ITEM順序從上到下，再從左到右 */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-
-  /* 卡片邊距 */
-  margin: 2px;
-  /* 設定 box-sizing*/
-  box-sizing: border-box;
 }
 
 /* 調整花色 */
