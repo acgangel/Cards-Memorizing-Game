@@ -38,7 +38,7 @@ const view = {
   },
   // 渲染牌背
   getCardElement(index) {
-    return `<div class="card back"></div>`
+    return `<div data-index="${index}" class="card back"></div>`
   },
   // 負責生成卡片內容，包括花色和數字
   getCardContent(index) {
