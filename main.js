@@ -54,4 +54,21 @@ const view = {
     rootElement.innerHTML = Array.from(Array(52).keys()).map(index => this.getCardElement(index)).join("");
   },
 }
+
+// 其他工具
+const utility {
+  // Fisher-Yates Shuffle 洗牌演算法，又名 Knuth-Shuffle
+  getRandomNumberArray(count) {
+    const number = Array.from(Array(count).keys())
+    // index = number.length - 1 取出最後一項
+    for (let index = number.length - 1; index > 0; index--) {
+      let randomIndex = Math.floor(Math.random() * (index + 1))
+        // 交換陣列元素，加上分號避免被解讀成 Math.floor()[]，把執行語句隔開
+        ;[number[index], number[randomIndex]] = [number[randomIndex], number[index]]
+    }
+    return number
+  }
+}
+
+
 view.displayCards()
