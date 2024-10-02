@@ -49,14 +49,13 @@ const view = {
   },
   // 負責選出 #cards 並抽換內容
   displayCards() {
-    const rootElement = document.querySelector("#cards");
-    // Array.from(Array(52).keys()) 生成陣列
-    rootElement.innerHTML = Array.from(Array(52).keys()).map(index => this.getCardElement(index)).join("");
+    const rootElement = document.querySelector('#cards')
+    rootElement.innerHTML = utility.getRandomNumberArray(52).map(index => this.getCardElement(index)).join('')
   },
 }
 
 // 建立utility模組來存放專案的工具函式
-const utility {
+const utility = {
   // Fisher-Yates Shuffle 洗牌演算法，又名 Knuth-Shuffle
   getRandomNumberArray(count) {
     const number = Array.from(Array(count).keys())
@@ -69,6 +68,5 @@ const utility {
     return number
   }
 }
-
 
 view.displayCards()
