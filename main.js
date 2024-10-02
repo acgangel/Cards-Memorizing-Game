@@ -36,8 +36,12 @@ const view = {
         return number
     }
   },
-  // 負責生成卡片內容，包括花色和數字
+  // 渲染牌背
   getCardElement(index) {
+    return `<div class="card back"></div>`
+  },
+  // 負責生成卡片內容，包括花色和數字
+  getCardContent(index) {
     const number = this.transformNumber((index % 13) + 1)
     const symbol = Symbols[Math.floor(index / 13)] //向下取整到最接近的整數
     return `
