@@ -91,7 +91,7 @@ view.displayCards()
 // 為每一個 .card 產生監聽器，總共需要 52 個監聽器
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('click', event => {
-    console.log(card)
+    view.flipCard(card)
   })
 })
 
