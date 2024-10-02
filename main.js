@@ -18,14 +18,15 @@ const Symbols = [
 
 const view = {
   // 負責生成卡片內容，包括花色和數字
-  getCardElement() {
+  getCardElement(index) {
+    const number = (index % 13) + 1
+    const symbol = Symbols[Math.floor(index / 13)]
     return `
       <div class="card">
-        <p>6</p>
-        <img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/17992/heart.png">
-        <p>6</p>
-      </div>
-    `
+        <p>${number}</p>
+        <img src="${symbol}" />
+        <p>${number}</p>
+      </div>`
   },
   // 負責選出 #cards 並抽換內容
   displayCards() {
