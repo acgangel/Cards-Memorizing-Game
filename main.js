@@ -55,7 +55,7 @@ const view = {
   },
 }
 
-// 其他工具
+// 建立utility模組來存放專案的工具函式
 const utility {
   // Fisher-Yates Shuffle 洗牌演算法，又名 Knuth-Shuffle
   getRandomNumberArray(count) {
@@ -63,7 +63,7 @@ const utility {
     // index = number.length - 1 取出最後一項
     for (let index = number.length - 1; index > 0; index--) {
       let randomIndex = Math.floor(Math.random() * (index + 1))
-        // 交換陣列元素，加上分號避免被解讀成 Math.floor()[]，把執行語句隔開
+        // ES6 的解構賦值語法：交換陣列元素。加上分號是為了把執行語句隔開，避免讀成 Math.floor()[]
         ;[number[index], number[randomIndex]] = [number[randomIndex], number[index]]
     }
     return number
