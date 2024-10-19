@@ -99,6 +99,27 @@ const controller = {
   currentState: GAME_STATE.FirstCardAwaits,  // 加在第一行
   generateCards() {
     view.displayCards(utility.getRandomNumberArray(52))
+  },
+
+  //依照不同遊戲狀態，做不同的行為
+  dispatchCardAction(card) {
+    if (!card.classList.contains('back')) { //不是牌背狀態的卡片，代表已被點擊／已配對，若點擊的卡為正面的卡，則跳出function
+      return
+    }
+    switch (this.currentState) {
+      case GAME_STATE.FirstCardAwaits:
+        view.flipCard(card)
+        model.revealedCards.push(card)
+        this.currentState = GAME_STATE.SecondCardAwaits
+        break
+      case GAME_STATE.SecondCardAwaits:
+        view.flipCard(card)
+        model.revealedCards.push(card)
+        // 判斷配對是否成功
+        break
+    }
+    console.log('this.currentState', this.currentState)
+    console.log('revealedCards', model.revealedCards.map(card => card.dataset.index))
   }
 }
 
@@ -111,7 +132,7 @@ controller.generateCards() // 取代 view.displayCards()
 // 為每一個 .card 產生監聽器，總共需要 52 個監聽器
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('click', event => {
-    view.flipCard(card)
+    controller.dispatchCardAction(card) // 取代 view.flipCard()
   })
 })
 
