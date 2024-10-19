@@ -61,9 +61,9 @@ const view = {
       </div>`
   },
   // 負責選出 #cards 並抽換內容
-  displayCards() {
+  displayCards(indexes) {
     const rootElement = document.querySelector('#cards')
-    rootElement.innerHTML = utility.getRandomNumberArray(52).map(index => this.getCardElement(index)).join('')
+    rootElement.innerHTML = indexes.map(index => this.getCardElement(index)).join('')
   },
   // 翻牌
   flipCard(card) {
@@ -97,14 +97,16 @@ const utility = {
 
 const controller = {
   currentState: GAME_STATE.FirstCardAwaits,  // 加在第一行
-  // ... 
+  generateCards() {
+    view.displayCards(utility.getRandomNumberArray(52))
+  }
 }
 
 const model = {
   revealedCards: [] //revealedCards 是一個暫存牌組
 }
 
-view.displayCards()
+controller.generateCards() // 取代 view.displayCards()
 
 // 為每一個 .card 產生監聽器，總共需要 52 個監聽器
 document.querySelectorAll('.card').forEach(card => {
