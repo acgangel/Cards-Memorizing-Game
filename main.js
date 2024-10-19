@@ -1,3 +1,12 @@
+// 放在文件最上方
+const GAME_STATE = {
+  FirstCardAwaits: "FirstCardAwaits",
+  SecondCardAwaits: "SecondCardAwaits",
+  CardsMatchFailed: "CardsMatchFailed",
+  CardsMatched: "CardsMatched",
+  GameFinished: "GameFinished",
+}
+
 // 將變數首字母大寫以表示資料不會變動
 const Symbols = [
   './assets/club.png', // 黑桃
@@ -84,6 +93,11 @@ const utility = {
     }
     return number
   }
+}
+
+const controller = {
+  currentState: GAME_STATE.FirstCardAwaits,  // 加在第一行
+  // ... 
 }
 
 view.displayCards()
