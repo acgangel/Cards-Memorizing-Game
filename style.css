@@ -48,3 +48,8 @@
   background: url('./assets/back.png');
   background-size: cover;
 }
+
+/* 改變已配對的卡片底色 */
+.paired {
+  background-color: #dae0e3;
+}

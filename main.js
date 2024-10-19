@@ -77,6 +77,9 @@ const view = {
     // 回傳背面
     card.classList.add('back')
     card.innerHTML = null
+  },
+  pairCard(card) { //改變已配對的卡片底色
+    card.classList.add('paired')
   }
 }
 
@@ -115,6 +118,8 @@ const controller = {
           this.currentState = GAME_STATE.CardsMatched
           view.pairCard(model.revealedCards[0])
           view.pairCard(model.revealedCards[1])
+          model.revealedCards = []
+          this.currentState = GAME_STATE.FirstCardAwaits
 
         } else {
           // 配對失敗
