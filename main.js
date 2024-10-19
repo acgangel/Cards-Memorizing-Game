@@ -116,6 +116,21 @@ const controller = {
         view.flipCard(card)
         model.revealedCards.push(card)
         // 判斷配對是否成功
+        if (model.isRevealedCardsMatched()) {
+          // 配對成功
+          this.currentState = GAME_STATE.CardsMatched
+          view.pairCard(model.revealedCards[0])
+          view.pairCard(model.revealedCards[1])
+
+        } else {
+          // 配對失敗
+          setTimeout(() => {
+            view.flipCard(model.revealedCards[0])
+            view.flipCard(model.revealedCards[1])
+            model.revealedCards = []
+            this.currentState = GAME_STATE.CardsMatchFailed
+          }, 1000)
+        }
         break
     }
     console.log('this.currentState', this.currentState)
@@ -124,7 +139,12 @@ const controller = {
 }
 
 const model = {
-  revealedCards: [] //revealedCards 是一個暫存牌組
+  revealedCards: [], //revealedCards 是一個暫存牌組
+
+  //檢查使用者翻開的兩張卡片是否相同
+  isRevealedCardsMatched() {
+    return this.revealedCards[0].dataset.index % 13 === this.revealedCards[1].dataset.index % 13
+  }
 }
 
 controller.generateCards() // 取代 view.displayCards()
