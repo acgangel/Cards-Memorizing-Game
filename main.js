@@ -54,11 +54,10 @@ const view = {
     const number = this.transformNumber((index % 13) + 1)
     const symbol = Symbols[Math.floor(index / 13)] //向下取整到最接近的整數
     return `
-      <div class="card">
         <p>${number}</p>
         <img src="${symbol}" />
         <p>${number}</p>
-      </div>`
+        `
   },
   // 負責選出 #cards 並抽換內容
   displayCards(indexes) {
