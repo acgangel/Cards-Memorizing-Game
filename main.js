@@ -80,18 +80,12 @@ const view = {
   }
 }
 
-// 建立utility模組來存放專案的工具函式
-const utility = {
-  // Fisher-Yates Shuffle 洗牌演算法，又名 Knuth-Shuffle
-  getRandomNumberArray(count) {
-    const number = Array.from(Array(count).keys())
-    // index = number.length - 1 取出最後一項
-    for (let index = number.length - 1; index > 0; index--) {
-      let randomIndex = Math.floor(Math.random() * (index + 1))
-        // ES6 的解構賦值語法：交換陣列元素。加上分號是為了把執行語句隔開，避免讀成 Math.floor()[]
-        ;[number[index], number[randomIndex]] = [number[randomIndex], number[index]]
-    }
-    return number
+const model = {
+  revealedCards: [], //revealedCards 是一個暫存牌組
+
+  //檢查使用者翻開的兩張卡片是否相同
+  isRevealedCardsMatched() {
+    return this.revealedCards[0].dataset.index % 13 === this.revealedCards[1].dataset.index % 13
   }
 }
 
@@ -138,14 +132,22 @@ const controller = {
   }
 }
 
-const model = {
-  revealedCards: [], //revealedCards 是一個暫存牌組
-
-  //檢查使用者翻開的兩張卡片是否相同
-  isRevealedCardsMatched() {
-    return this.revealedCards[0].dataset.index % 13 === this.revealedCards[1].dataset.index % 13
+// 建立utility模組來存放專案的工具函式
+const utility = {
+  // Fisher-Yates Shuffle 洗牌演算法，又名 Knuth-Shuffle
+  getRandomNumberArray(count) {
+    const number = Array.from(Array(count).keys())
+    // index = number.length - 1 取出最後一項
+    for (let index = number.length - 1; index > 0; index--) {
+      let randomIndex = Math.floor(Math.random() * (index + 1))
+        // ES6 的解構賦值語法：交換陣列元素。加上分號是為了把執行語句隔開，避免讀成 Math.floor()[]
+        ;[number[index], number[randomIndex]] = [number[randomIndex], number[index]]
+    }
+    return number
   }
 }
+
+
 
 controller.generateCards() // 取代 view.displayCards()
 
