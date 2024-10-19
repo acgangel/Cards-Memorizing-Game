@@ -100,6 +100,10 @@ const controller = {
   // ... 
 }
 
+const model = {
+  revealedCards: [] //revealedCards 是一個暫存牌組
+}
+
 view.displayCards()
 
 // 為每一個 .card 產生監聽器，總共需要 52 個監聽器
