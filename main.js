@@ -120,9 +120,9 @@ const controller = {
           view.pairCard(model.revealedCards[1])
           model.revealedCards = []
           this.currentState = GAME_STATE.FirstCardAwaits
-
         } else {
           // 配對失敗
+          this.currentState = GAME_STATE.CardsMatchFailed
           setTimeout(() => {
             view.flipCard(model.revealedCards[0])
             view.flipCard(model.revealedCards[1])
