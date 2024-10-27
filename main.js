@@ -136,7 +136,7 @@ const controller = {
   resetCards() {
     view.flipCards(...model.revealedCards)
     model.revealedCards = []
-    this.currentState = GAME_STATE.FirstCardAwaits
+    controller.currentState = GAME_STATE.FirstCardAwaits
   }
 }
 
