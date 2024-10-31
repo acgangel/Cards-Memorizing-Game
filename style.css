@@ -1,10 +1,43 @@
+#header {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 85%;
+}
+
+#header .title {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#header .title img {
+  max-width: 3em;
+}
+
+#header .title h2 {
+  padding-left: 0.5em;
+}
+
+#header .score {
+  margin: 0;
+  color: #6c90ac;
+}
+
+#header .tried {
+  margin-top: 0;
+}
+
 #cards {
   display: flex;
   /* 容器寬度的預設值為視窗大小 */
-
-  /* 換行 */
   flex-wrap: wrap;
-
+  /* 換行 */
+  width: 85%;
+  /* 寬度和標頭一致 */
+  margin: 0 auto;
+  /* 置中 */
 }
 
 .card {
@@ -13,7 +46,7 @@
   /* flex-basis: 7%; 每一橫列要有 13 張卡片，100 / 13=7.7
       flex-grow: 0; 不要分配剩餘空間，1 代表平分
       flex-shrink: 1; 視窗變小，flex item 就需要收縮 */
-  flex: 7% 0 1;
+  flex: 7% 1 1;
   /* 視窗大小的 8% */
   height: 8vw;
   border: 2px solid #e0e0e0;
