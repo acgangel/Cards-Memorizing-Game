@@ -30,7 +30,7 @@ const Symbols = [
 // }
 
 const view = {
-  // 數字轉換成AJOK
+  // 數字轉換成A,J,Q,K
   transformNumber(number) {
     switch (number) {
       case 1:
@@ -118,7 +118,7 @@ const controller = {
         if (model.isRevealedCardsMatched()) {
           // 配對成功
           this.currentState = GAME_STATE.CardsMatched
-          view.pairCard(...model.revealedCards)
+          view.pairCards(...model.revealedCards)
           model.revealedCards = []
           this.currentState = GAME_STATE.FirstCardAwaits
         } else {
@@ -154,8 +154,6 @@ const utility = {
     return number
   }
 }
-
-
 
 controller.generateCards() // 取代 view.displayCards()
 
