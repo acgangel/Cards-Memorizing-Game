@@ -91,7 +91,11 @@ const model = {
   //檢查使用者翻開的兩張卡片是否相同
   isRevealedCardsMatched() {
     return this.revealedCards[0].dataset.index % 13 === this.revealedCards[1].dataset.index % 13
-  }
+  },
+
+  //增加資料屬性
+  score: 0,
+  triedTimes: 0
 }
 
 const controller = {
