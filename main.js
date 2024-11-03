@@ -111,7 +111,7 @@ const view = {
       <p>You've tried: ${model.triedTimes} times</p>
     `
     const header = document.querySelector('#header')
-    header.before(div)
+    header.before(div) //display div in front of <header> element
   }
 }
 
