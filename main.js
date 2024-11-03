@@ -100,6 +100,18 @@ const view = {
       //用事件監聽器來綁定動畫結束事件 (animationend)，一旦動畫跑完一輪，就把 .wrong 這個 class 拿掉
       card.addEventListener('animationend', event => event.target.classList.remove('wrong'), { once: true }) //{ once: true }即要求在事件執行一次之後，就要卸載這個監聽器，因為同一張卡片可能會被點錯好幾次，每一次都需要動態地掛上一個新的監聽器，並且用完就要卸載
     })
+  },
+  //顯示遊戲結束畫面
+  showGameFinished() {
+    const div = document.createElement('div')
+    div.classList.add('completed')
+    div.innerHTML = `
+      <p>Complete!</p>
+      <p>Score: ${model.score}</p>
+      <p>You've tried: ${model.triedTimes} times</p>
+    `
+    const header = document.querySelector('#header')
+    header.before(div)
   }
 }
 
@@ -145,6 +157,13 @@ const controller = {
           this.currentState = GAME_STATE.CardsMatched
           view.pairCards(...model.revealedCards)
           model.revealedCards = []
+          // 遊戲是否全數配對完成
+          if (model.score === 260) {
+            console.log('showGameFinished')
+            this.currentState = GAME_STATE.GameFinished
+            view.showGameFinished()  // 顯示結束畫面
+            return
+          }
           this.currentState = GAME_STATE.FirstCardAwaits
         } else {
           // 配對失敗
