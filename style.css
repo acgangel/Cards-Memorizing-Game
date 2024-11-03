@@ -86,3 +86,17 @@
 .paired {
   background-color: #dae0e3;
 }
+
+.wrong {
+  animation-name: wrongAnimation;
+  animation-duration: 0.2s;
+  /* 動畫要持續 0.2 秒*/
+  animation-iteration-count: 5;
+  /* 動畫要重覆 5 次 */
+}
+
+@keyframes wrongAnimation {
+  to {
+    border: 2px solid #ffd54f;
+  }
+}

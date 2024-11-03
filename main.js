@@ -91,6 +91,15 @@ const view = {
   //改變已配對的卡片底色
   renderTriedTimes(times) {
     document.querySelector(".tried").textContent = `You've tried: ${times} times`
+  },
+  //配對失敗 閃爍5次
+  appendWrongAnimation(...cards) {
+    cards.map(card => {
+      //為卡片加入 .wrong 類別
+      card.classList.add('wrong')
+      //用事件監聽器來綁定動畫結束事件 (animationend)，一旦動畫跑完一輪，就把 .wrong 這個 class 拿掉
+      card.addEventListener('animationend', event => event.target.classList.remove('wrong'), { once: true }) //{ once: true }即要求在事件執行一次之後，就要卸載這個監聽器，因為同一張卡片可能會被點錯好幾次，每一次都需要動態地掛上一個新的監聽器，並且用完就要卸載
+    })
   }
 }
 
@@ -140,6 +149,7 @@ const controller = {
         } else {
           // 配對失敗
           this.currentState = GAME_STATE.CardsMatchFailed
+          view.appendWrongAnimation(...model.revealedCards) //配對失敗呼叫 view
           setTimeout(this.resetCards, 1000)
         }
         break
