@@ -120,12 +120,13 @@ const controller = {
     }
     switch (this.currentState) {
       case GAME_STATE.FirstCardAwaits:
+        view.renderTriedTimes(++model.triedTimes)
         view.flipCards(card)
         model.revealedCards.push(card)
         this.currentState = GAME_STATE.SecondCardAwaits
         break
       case GAME_STATE.SecondCardAwaits:
-        view.renderTriedTimes(++model.triedTimes)
+
         view.flipCards(card)
         model.revealedCards.push(card)
         // 判斷配對是否成功
