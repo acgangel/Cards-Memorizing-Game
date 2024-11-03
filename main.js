@@ -78,10 +78,19 @@ const view = {
       card.innerHTML = null
     })
   },
-  pairCards(...cards) { //改變已配對的卡片底色
+  //改變已配對的卡片底色
+  pairCards(...cards) {
     cards.map(card => {
       card.classList.add('paired')
     })
+  },
+  //改變已配對的卡片底色
+  renderScore(score) {
+    document.querySelector(".score").textContent = `Score: ${score}`
+  },
+  //改變已配對的卡片底色
+  renderTriedTimes(times) {
+    document.querySelector(".tried").textContent = `You've tried: ${times} times`
   }
 }
 
